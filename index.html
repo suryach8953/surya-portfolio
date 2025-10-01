@@ -1,159 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surya Singh | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surya Pratap Singh | Portfolio</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+        body {
+            background: #f4f7f6; /* Lighter background */
+            color: #333;
+            line-height: 1.6;
+        }
 
-    body {
-      background: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
-    }
+        /* Header/Hero Section */
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
 
-    header {
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: white;
-      text-align: center;
-      padding: 50px 20px;
-    }
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
 
-    header h1 {
-      font-size: 2.5rem;
-    }
+        header p {
+            margin: 10px 0 20px;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
 
-    header p {
-      margin: 10px 0;
-      font-size: 1.2rem;
-    }
+        /* Navigation */
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-    nav a {
-      margin: 0 15px;
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
+        nav a:hover {
+            color: #ffcc00; /* Yellow highlight */
+        }
 
-    nav a:hover {
-      color: #ffcc00;
-    }
+        /* Section Container */
+        section {
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 20px 20px;
+        }
 
-    section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 60px 20px;
-    }
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1e3c72;
+            font-size: 2rem;
+            border-bottom: 2px solid #ffcc00;
+            display: inline-block;
+            padding-bottom: 5px;
+            width: fit-content;
+            margin: 0 auto 40px auto;
+            display: block;
+        }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #1e3c72;
-    }
+        /* Card Style */
+        .card {
+            background: white;
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08); /* Softer shadow */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-    .card {
-      background: white;
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* About Section - Flexbox for Side-by-Side */
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap; 
+            text-align: left;
+        }
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+        .profile img {
+            width: 180px; 
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid #2a5298;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .profile p {
+            max-width: 600px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
 
-    .profile {
-  text-align: center; /* This centers the image and text horizontally within its own block */
-}
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
 
-.profile img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-bottom: 15px; /* This creates space below the image */
-  border: 4px solid #1e3c72;
-}
+        .skills-grid li {
+            background: #f0f4ff; 
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #1e3c72;
+            border-left: 5px solid #ffcc00;
+        }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #1e3c72;
-      color: white;
-      margin-top: 40px;
-    }
-  </style>
+        /* Work Experience & Education Styles */
+        .experience-item, .education-item {
+            border-left: 4px solid #1e3c72;
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .experience-item h3, .education-item h3 {
+            color: #2a5298;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .experience-item p, .education-item p {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        /* Major Change: Portfolio Style Text Block */
+        .portfolio-description {
+            margin: 15px 0 0 0;
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.7;
+            padding-right: 10px; /* Space from the border */
+        }
+        
+        .portfolio-description strong {
+            color: #1e3c72;
+        }
+
+
+        /* Contact Section */
+        .contact-details {
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .contact-details a {
+            color: #2a5298;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-details p {
+            margin-bottom: 10px;
+        }
+
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #1e3c72;
+            color: white;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+        
+        /* Media Query for smaller screens */
+        @media (max-width: 768px) {
+            .profile {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile p {
+                text-align: center;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <header>
-  <h1>Surya Pratap Singh</h1>
-  <p>Data Analyst | Operations Manager | MBA</p>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <h1>Surya Pratap Singh</h1>
+    <p>Operations Team Leader | Data Analysis | MBA Candidate</p>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </header>
 
 <section id="about">
-  <h2>About Me</h2>
-  <div class="card profile">
-    <!-- Apni photo ka naam "profile.jpg" rakho aur isi folder me daal do -->
-    <img src="profile.jpg" alt="Surya Photo">
-    <p>Hi, I am Surya, a Data Analyst with expertise in Excel, SQL, and Power BI. 
-       Currently pursuing MBA and passionate about Data Science & Operations Management.</p>
-  </div>
+    <h2>About Me</h2>
+    <div class="card profile">
+        <img src="profile.jpg" alt="Surya Pratap Singh Photo">
+        <p>
+            [cite_start]I'm an **Operations Team Leader** specializing in financial services and international voice/chat processes[cite: 6]. [cite_start]My focus is on driving efficiency and maintaining client satisfaction in fast-paced environments[cite: 8, 21]. [cite_start]I excel at **leading high-performing teams** and utilizing skills in financial reconciliation and process optimization to achieve measurable results[cite: 7, 8]. [cite_start]Currently, I am pursuing an **MBA** to further strengthen my strategic leadership and analytical capabilities[cite: 9].
+        </p>
+    </div>
+</section>
+
+<section id="experience">
+    <h2>Work Experience</h2>
+    
+    <div class="card">
+        <div class="experience-item">
+            <h3>Team Leader at Samarth Care</h3>
+            <p>Gurgaon | [cite_start]Oct 2023 - Present [cite: 16, 17]</p>
+            <div class="portfolio-description">
+                [cite_start]As Team Leader, I successfully managed a team of **6+ executives** in a high-pressure operations setting, leading to a significant **25% boost in team productivity**[cite: 18]. [cite_start]I took complete ownership of the financial pipeline, overseeing **₹1 Cr+ in monthly transaction processing** and ensuring absolute accuracy and compliance through timely financial reconciliation[cite: 19]. [cite_start]My role involved extensive **coaching and mentoring** to uplift overall quality and efficiency [cite: 20][cite_start], while also resolving client escalations to maintain high service delivery and satisfaction[cite: 21]. [cite_start]Furthermore, I introduced new reporting and invoicing systems that strengthened the entire operational efficiency[cite: 22].
+            </div>
+        </div>
+        
+        <hr style="margin: 20px 0; border: 0; border-top: 1px dashed #eee;">
+        
+        <div class="experience-item">
+            <h3>Operations Executive at Samarth Care</h3>
+            <p>Gurgaon | [cite_start]Sep 2021 - Sep 2023 [cite: 23, 26]</p>
+            <div class="portfolio-description">
+                [cite_start]In this role, I was responsible for coordinating with **200+ team members** across various locations in India, ensuring seamless and timely service delivery[cite: 27]. [cite_start]I managed an average of **1500+ monthly tasks** with strict timelines, maintaining full compliance throughout operations[cite: 25]. [cite_start]A key achievement was supporting core **Procure-to-Pay (P2P)** processes, including accounts payable and vendor management, which successfully **reduced processing time by 25%**[cite: 28].
+            </div>
+        </div>
+    </div>
 </section>
 
 <section id="skills">
-  <h2>Skills</h2>
-  <div class="card">
-    <ul>
-      <li>Excel (Advanced)</li>
-      <li>SQL</li>
-      <li>Power BI</li>
-      <li>Python (Beginner)</li>
-      <li>Operations & Team Management</li>
-    </ul>
-  </div>
+    <h2>Core Skills</h2>
+    <div class="card">
+        <ul class="skills-grid">
+            [cite_start]<li>Operations & Team Management [cite: 14]</li>
+            [cite_start]<li>Financial Reconciliations & Accounts Payable [cite: 14]</li>
+            [cite_start]<li>Client Communication & Escalation Handling [cite: 14]</li>
+            [cite_start]<li>Data Analysis & Reporting [cite: 14]</li>
+            [cite_start]<li>MySql & Power BI [cite: 12]</li>
+            [cite_start]<li>Crisis / Emergency Handling [cite: 12]</li>
+            [cite_start]<li>Procure-To-Pay (P2P) Cycle [cite: 12]</li>
+            [cite_start]<li>Microsoft Excel [cite: 14]</li>
+            [cite_start]<li>Problem Solving & Critical Thinking [cite: 13]</li>
+            [cite_start]<li>International Voice & Chat Process [cite: 11]</li>
+        </ul>
+    </div>
 </section>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="card">
-    <h3>Marketing Campaign Dashboard</h3>
-    <p>Analyzed campaign performance using Excel dashboards.</p>
-  </div>
-  <div class="card">
-    <h3>Healthcare Data Analysis</h3>
-    <p>Worked on patient records to detect patterns and insights for efficiency.</p>
-  </div>
+<section id="education">
+    <h2>Education & Certifications</h2>
+    <div class="card">
+        
+        <h3 style="color: #1e3c72; margin-bottom: 15px;">Education</h3>
+        
+        <div class="education-item">
+            <h4>Master of Business Administration (MBA)</h4>
+            <p>Amity University, Noida, Uttar Pradesh | [cite_start]2025 - Present [cite: 30]</p>
+        </div>
+        
+        <div class="education-item">
+            <h4>Bachelor of Commerce (B.Com)</h4>
+            <p>Mahatma Jyotiba Phule Rohilkhand University, Bareilly, UP | [cite_start]2019 - 2022 [cite: 30]</p>
+        </div>
+        
+        <hr style="margin: 20px 0; border: 0; border-top: 1px dashed #eee;">
+
+        <h3 style="color: #1e3c72; margin-bottom: 15px;">Certifications</h3>
+        <ul class="skills-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            [cite_start]<li>Data Analyst (Newton School) [cite: 32, 33]</li>
+            [cite_start]<li>Business Analysis Foundations (LinkedIn) [cite: 37]</li>
+            [cite_start]<li>Introduction to Generative AI (Google) [cite: 36]</li>
+            [cite_start]<li>Power BI Workshop [cite: 38]</li>
+            [cite_start]<li>Course on Computer Concepts (NIELIT) [cite: 34, 35]</li>
+        </ul>
+
+    </div>
 </section>
+
 
 <section id="contact">
-  <h2>Contact</h2>
-  <div class="card">
-    <p><b>Email:</b> surya@example.com</p>
-    <p><b>LinkedIn:</b> <a href="#" target="_blank">linkedin.com/in/surya</a></p>
-  </div>
+    <h2>Contact & Social</h2>
+    <div class="card contact-details">
+        [cite_start]<p><b>Email:</b> <a href="mailto:samsuryasingh@gmail.com">samsuryasingh@gmail.com</a> [cite: 3]</p>
+        [cite_start]<p><b>Phone:</b> 8953531942 [cite: 4]</p>
+        [cite_start]<p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/89suryasingh/" target="_blank">linkedin.com/in/89suryasingh</a> [cite: 2, 45]</p>
+        [cite_start]<p><b>GitHub:</b> <a href="https://github.com/suryach8953" target="_blank">github.com/suryach8953</a> [cite: 46, 47]</p>
+    </div>
 </section>
 
 <footer>
-  <p>© 2025 Surya Singh. All rights reserved.</p>
+    <p>© 2025 Surya Pratap Singh. All rights reserved.</p>
 </footer>
 
 </body>
