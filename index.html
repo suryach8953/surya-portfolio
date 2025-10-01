@@ -3,205 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surya Pratap Singh | Portfolio</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Surya Pratap Singh | Data Analyst Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background: #f4f7f6; /* Lighter background */
-            color: #333;
+            background: #f8fafc;
+            color: #1e293b;
             line-height: 1.6;
         }
 
-        /* Header/Hero Section */
+        /* Header */
         header {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
             text-align: center;
-            padding: 60px 20px 40px;
+            padding: 60px 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
+            margin-bottom: 10px;
         }
 
-        header p {
-            margin: 10px 0 20px;
+        header .tagline {
             font-size: 1.2rem;
-            font-weight: 400;
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+
+        header .highlight {
+            color: #3b82f6;
+            font-weight: 600;
         }
 
         /* Navigation */
+        nav {
+            margin-top: 20px;
+        }
+
         nav a {
             margin: 0 15px;
-            color: white;
+            color: #cbd5e1;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
         nav a:hover {
-            color: #ffcc00; /* Yellow highlight */
+            color: #3b82f6;
         }
 
-        /* Section Container */
-        section {
-            max-width: 1000px;
-            margin: auto;
-            padding: 60px 20px 20px;
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 40px;
-            color: #1e3c72;
-            font-size: 2rem;
-            border-bottom: 2px solid #ffcc00;
+        /* Section Titles */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3b82f6;
             display: inline-block;
-            padding-bottom: 5px;
-            width: fit-content;
-            margin: 0 auto 40px auto;
-            display: block;
         }
 
-        /* Card Style */
+        /* Cards */
         .card {
             background: white;
             padding: 30px;
-            margin: 25px 0;
+            margin-bottom: 25px;
             border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08); /* Softer shadow */
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #3b82f6;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        }
-        
-        /* About Section - Flexbox for Side-by-Side */
-        .profile {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap; 
-            text-align: left;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.15);
+            transform: translateY(-2px);
         }
 
-        .profile img {
-            width: 180px; 
-            height: 180px;
-            border-radius: 50%;
-            border: 5px solid #2a5298;
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 12px;
             object-fit: cover;
+            border: 4px solid #3b82f6;
             flex-shrink: 0;
         }
-        
-        .profile p {
-            max-width: 600px;
-            font-size: 1.1rem;
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
             line-height: 1.8;
+            color: #475569;
         }
 
         /* Skills Section */
-        .skills-grid {
+        .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            list-style: none;
-            padding: 0;
         }
 
-        .skills-grid li {
-            background: #f0f4ff; 
-            padding: 10px 15px;
-            border-radius: 6px;
-            font-weight: 500;
-            color: #1e3c72;
-            border-left: 5px solid #ffcc00;
+        .skill-category {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        /* Work Experience & Education Styles */
-        .experience-item, .education-item {
-            border-left: 4px solid #1e3c72;
-            padding-left: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .experience-item h3, .education-item h3 {
-            color: #2a5298;
-            margin-bottom: 5px;
+        .skill-category h3 {
+            color: #3b82f6;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
             font-weight: 600;
         }
-        
-        .experience-item p, .education-item p {
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            color: #475569;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.95rem;
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 35px;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .experience-header h3 {
+            color: #0f172a;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .experience-header .duration {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .company {
+            color: #3b82f6;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .responsibilities {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .responsibilities li {
+            padding: 10px 0 10px 25px;
+            color: #475569;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .responsibilities li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-size: 1.2rem;
+        }
+
+        .metric {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        /* Education & Certifications */
+        .education-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .education-item h3 {
+            color: #0f172a;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .education-item .institution {
+            color: #3b82f6;
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+        }
+
+        .education-item .year {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .cert-item {
+            background: #f8fafc;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 3px solid #3b82f6;
+        }
+
+        .cert-item h4 {
+            color: #0f172a;
             font-size: 0.95rem;
             margin-bottom: 5px;
         }
 
-        /* Major Change: Portfolio Style Text Block */
-        .portfolio-description {
-            margin: 15px 0 0 0;
-            font-size: 1rem;
-            color: #444;
-            line-height: 1.7;
-            padding-right: 10px; /* Space from the border */
-        }
-        
-        .portfolio-description strong {
-            color: #1e3c72;
+        .cert-item p {
+            color: #64748b;
+            font-size: 0.85rem;
         }
 
+        /* Achievement Section */
+        .achievement {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .achievement h3 {
+            color: #1e40af;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .achievement p {
+            color: #475569;
+        }
 
         /* Contact Section */
-        .contact-details {
-            text-align: center;
-            font-size: 1.1rem;
-        }
-        
-        .contact-details a {
-            color: #2a5298;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .contact-details p {
-            margin-bottom: 10px;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
+        .contact-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            box-shadow: 0 4px 12px rgba(59,130,246,0.15);
+            transform: translateY(-2px);
+        }
+
+        .contact-item h4 {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-item a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .contact-item a:hover {
+            color: #1e40af;
+        }
 
         /* Footer */
         footer {
+            background: #0f172a;
+            color: #94a3b8;
             text-align: center;
-            padding: 25px;
-            background: #1e3c72;
-            color: white;
+            padding: 30px 20px;
             margin-top: 60px;
-            font-size: 0.9rem;
         }
-        
-        /* Media Query for smaller screens */
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .profile {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
                 flex-direction: column;
                 text-align: center;
             }
-            .profile p {
-                text-align: center;
+            
+            nav a {
+                margin: 0 8px;
+                font-size: 0.85rem;
             }
-            header h1 {
-                font-size: 2.2rem;
+
+            .experience-header {
+                flex-direction: column;
             }
         }
     </style>
@@ -210,112 +365,251 @@
 
 <header>
     <h1>Surya Pratap Singh</h1>
-    <p>Operations Team Leader | Data Analysis | MBA Candidate</p>
+    <p class="tagline"><span class="highlight">Data Analyst</span> | Operations Excellence | Process Optimization</p>
     <nav>
         <a href="#about">About</a>
-        <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
     </nav>
 </header>
 
-<section id="about">
-    <h2>About Me</h2>
-    <div class="card profile">
-        <img src="profile.jpg" alt="Surya Pratap Singh Photo">
-        <p>
-            [cite_start]I'm an **Operations Team Leader** specializing in financial services and international voice/chat processes[cite: 6]. [cite_start]My focus is on driving efficiency and maintaining client satisfaction in fast-paced environments[cite: 8, 21]. [cite_start]I excel at **leading high-performing teams** and utilizing skills in financial reconciliation and process optimization to achieve measurable results[cite: 7, 8]. [cite_start]Currently, I am pursuing an **MBA** to further strengthen my strategic leadership and analytical capabilities[cite: 9].
-        </p>
-    </div>
-</section>
-
-<section id="experience">
-    <h2>Work Experience</h2>
-    
-    <div class="card">
-        <div class="experience-item">
-            <h3>Team Leader at Samarth Care</h3>
-            <p>Gurgaon | [cite_start]Oct 2023 - Present [cite: 16, 17]</p>
-            <div class="portfolio-description">
-                [cite_start]As Team Leader, I successfully managed a team of **6+ executives** in a high-pressure operations setting, leading to a significant **25% boost in team productivity**[cite: 18]. [cite_start]I took complete ownership of the financial pipeline, overseeing **₹1 Cr+ in monthly transaction processing** and ensuring absolute accuracy and compliance through timely financial reconciliation[cite: 19]. [cite_start]My role involved extensive **coaching and mentoring** to uplift overall quality and efficiency [cite: 20][cite_start], while also resolving client escalations to maintain high service delivery and satisfaction[cite: 21]. [cite_start]Furthermore, I introduced new reporting and invoicing systems that strengthened the entire operational efficiency[cite: 22].
+<div class="container">
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="card">
+            <div class="about-content">
+                <img src="profile.jpg" alt="Surya Pratap Singh" class="profile-img">
+                <div class="about-text">
+                    <p>
+                        Data Analyst with expertise in <strong>financial operations</strong> and <strong>process optimization</strong>. Proven track record of leveraging data-driven insights to enhance efficiency and drive business outcomes. Skilled in <strong>MIS reporting</strong>, <strong>financial reconciliation</strong>, and <strong>performance analytics</strong> with hands-on experience in <strong>Power BI, MySQL, and Excel</strong>. Currently pursuing <strong>MBA</strong> to strengthen analytical and strategic capabilities. Passionate about transforming raw data into actionable insights that support operational excellence and business growth.
+                    </p>
+                </div>
             </div>
         </div>
-        
-        <hr style="margin: 20px 0; border: 0; border-top: 1px dashed #eee;">
-        
-        <div class="experience-item">
-            <h3>Operations Executive at Samarth Care</h3>
-            <p>Gurgaon | [cite_start]Sep 2021 - Sep 2023 [cite: 23, 26]</p>
-            <div class="portfolio-description">
-                [cite_start]In this role, I was responsible for coordinating with **200+ team members** across various locations in India, ensuring seamless and timely service delivery[cite: 27]. [cite_start]I managed an average of **1500+ monthly tasks** with strict timelines, maintaining full compliance throughout operations[cite: 25]. [cite_start]A key achievement was supporting core **Procure-to-Pay (P2P)** processes, including accounts payable and vendor management, which successfully **reduced processing time by 25%**[cite: 28].
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>📊 Data Analysis & Visualization</h3>
+                <ul>
+                    <li>Microsoft Excel (Advanced)</li>
+                    <li>Power BI</li>
+                    <li>MySQL</li>
+                    <li>Data Analysis & Reporting</li>
+                    <li>MIS Reporting</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>💼 Operations & Process</h3>
+                <ul>
+                    <li>Operations Management</li>
+                    <li>Process Optimization</li>
+                    <li>Financial Reconciliations</li>
+                    <li>Procure-to-Pay (P2P) Cycle</li>
+                    <li>Performance Monitoring</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>🎯 Core Competencies</h3>
+                <ul>
+                    <li>Team Leadership</li>
+                    <li>Problem Solving & Critical Thinking</li>
+                    <li>Client Communication</li>
+                    <li>Escalation Management</li>
+                    <li>Vendor Management</li>
+                </ul>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="skills">
-    <h2>Core Skills</h2>
-    <div class="card">
-        <ul class="skills-grid">
-            [cite_start]<li>Operations & Team Management [cite: 14]</li>
-            [cite_start]<li>Financial Reconciliations & Accounts Payable [cite: 14]</li>
-            [cite_start]<li>Client Communication & Escalation Handling [cite: 14]</li>
-            [cite_start]<li>Data Analysis & Reporting [cite: 14]</li>
-            [cite_start]<li>MySql & Power BI [cite: 12]</li>
-            [cite_start]<li>Crisis / Emergency Handling [cite: 12]</li>
-            [cite_start]<li>Procure-To-Pay (P2P) Cycle [cite: 12]</li>
-            [cite_start]<li>Microsoft Excel [cite: 14]</li>
-            [cite_start]<li>Problem Solving & Critical Thinking [cite: 13]</li>
-            [cite_start]<li>International Voice & Chat Process [cite: 11]</li>
-        </ul>
-    </div>
-</section>
-
-<section id="education">
-    <h2>Education & Certifications</h2>
-    <div class="card">
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Work Experience</h2>
         
-        <h3 style="color: #1e3c72; margin-bottom: 15px;">Education</h3>
-        
-        <div class="education-item">
-            <h4>Master of Business Administration (MBA)</h4>
-            <p>Amity University, Noida, Uttar Pradesh | [cite_start]2025 - Present [cite: 30]</p>
+        <!-- Team Leader Role -->
+        <div class="card">
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3>Team Leader - Data & Operations</h3>
+                        <p class="company">Samarth Care, Gurgaon</p>
+                    </div>
+                    <span class="duration">Oct 2023 - Present</span>
+                </div>
+                
+                <ul class="responsibilities">
+                    <li>Generated comprehensive <strong>MIS reports</strong> and dashboards using <strong>Power BI and Excel</strong>, providing actionable insights that improved decision-making and resulted in a <span class="metric">25% boost in team productivity</span></li>
+                    
+                    <li>Analyzed financial data for transaction processing worth <span class="metric">₹1 Cr+ monthly</span>, performing data validation, reconciliation, and identifying discrepancies to ensure <span class="metric">100% accuracy and compliance</span></li>
+                    
+                    <li>Designed and implemented <strong>automated reporting systems</strong> for invoicing and performance tracking, reducing manual effort by <span class="metric">30%</span> and improving data accessibility across teams</li>
+                    
+                    <li>Conducted <strong>performance analysis</strong> of 6+ team members using KPI tracking and trend analysis, identifying improvement areas and implementing data-driven coaching strategies</li>
+                    
+                    <li>Utilized <strong>SQL queries</strong> to extract, transform, and analyze operational data from multiple sources, creating standardized reports for management review and process optimization</li>
+                    
+                    <li>Developed <strong>process improvement initiatives</strong> based on data insights, streamlining workflows and enhancing operational efficiency across reporting and invoicing functions</li>
+                </ul>
+            </div>
         </div>
-        
-        <div class="education-item">
-            <h4>Bachelor of Commerce (B.Com)</h4>
-            <p>Mahatma Jyotiba Phule Rohilkhand University, Bareilly, UP | [cite_start]2019 - 2022 [cite: 30]</p>
+
+        <!-- Operations Executive Role -->
+        <div class="card">
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3>Operations Executive - Data & Process Management</h3>
+                        <p class="company">Samarth Care, Gurgaon</p>
+                    </div>
+                    <span class="duration">Sep 2021 - Sep 2023</span>
+                </div>
+                
+                <ul class="responsibilities">
+                    <li>Managed and analyzed data for <span class="metric">1500+ monthly tasks</span>, ensuring timely completion and maintaining comprehensive databases for tracking operational metrics</li>
+                    
+                    <li>Created <strong>Excel-based tracking systems</strong> and reports to monitor progress across 200+ team members in multiple locations, improving transparency and coordination</li>
+                    
+                    <li>Performed <strong>data analysis on P2P cycle</strong> (Procure-to-Pay) including accounts payable and vendor management, identifying bottlenecks that led to <span class="metric">25% reduction in processing time</span></li>
+                    
+                    <li>Generated <strong>daily, weekly, and monthly operational reports</strong> highlighting key metrics, trends, and anomalies for management decision-making</li>
+                    
+                    <li>Maintained data integrity across multiple systems, performing regular <strong>data audits and quality checks</strong> to ensure accuracy in financial and operational records</li>
+                    
+                    <li>Collaborated with cross-functional teams to gather requirements and develop <strong>custom reports</strong> that addressed specific business needs and improved process visibility</li>
+                </ul>
+            </div>
         </div>
-        
-        <hr style="margin: 20px 0; border: 0; border-top: 1px dashed #eee;">
+    </section>
 
-        <h3 style="color: #1e3c72; margin-bottom: 15px;">Certifications</h3>
-        <ul class="skills-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-            [cite_start]<li>Data Analyst (Newton School) [cite: 32, 33]</li>
-            [cite_start]<li>Business Analysis Foundations (LinkedIn) [cite: 37]</li>
-            [cite_start]<li>Introduction to Generative AI (Google) [cite: 36]</li>
-            [cite_start]<li>Power BI Workshop [cite: 38]</li>
-            [cite_start]<li>Course on Computer Concepts (NIELIT) [cite: 34, 35]</li>
-        </ul>
+    <!-- Education & Certifications -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="card">
+            <div class="education-item">
+                <h3>Master of Business Administration (MBA)</h3>
+                <p class="institution">Amity University, Noida, Uttar Pradesh</p>
+                <p class="year">2025 - Present</p>
+            </div>
+            
+            <div class="education-item">
+                <h3>Bachelor of Commerce (B.Com)</h3>
+                <p class="institution">Mahatma Jyotiba Phule Rohilkhand University, Bareilly</p>
+                <p class="year">2019 - 2022</p>
+            </div>
+        </div>
 
-    </div>
-</section>
+        <h2 class="section-title" style="margin-top: 40px;">Certifications</h2>
+        <div class="card">
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <h4>Data Analyst</h4>
+                    <p>Newton School</p>
+                </div>
+                
+                <div class="cert-item">
+                    <h4>Power BI Workshop</h4>
+                    <p>Office Master</p>
+                </div>
+                
+                <div class="cert-item">
+                    <h4>Business Analysis Foundations</h4>
+                    <p>LinkedIn Learning</p>
+                </div>
+                
+                <div class="cert-item">
+                    <h4>Introduction to Generative AI</h4>
+                    <p>Google</p>
+                </div>
+                
+                <div class="cert-item">
+                    <h4>Course on Computer Concepts</h4>
+                    <p>NIELIT</p>
+                </div>
+            </div>
+        </div>
 
+        <h2 class="section-title" style="margin-top: 40px;">Notable Achievement</h2>
+        <div class="card">
+            <div class="achievement">
+                <h3>🏆 Spirit of Samarth Award - April 2025</h3>
+                <p>Recognized for demonstrating exceptional initiative and ownership in operations leadership, driving process improvements and team excellence</p>
+            </div>
+        </div>
+    </section>
 
-<section id="contact">
-    <h2>Contact & Social</h2>
-    <div class="card contact-details">
-        [cite_start]<p><b>Email:</b> <a href="mailto:samsuryasingh@gmail.com">samsuryasingh@gmail.com</a> [cite: 3]</p>
-        [cite_start]<p><b>Phone:</b> 8953531942 [cite: 4]</p>
-        [cite_start]<p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/89suryasingh/" target="_blank">linkedin.com/in/89suryasingh</a> [cite: 2, 45]</p>
-        [cite_start]<p><b>GitHub:</b> <a href="https://github.com/suryach8953" target="_blank">github.com/suryach8953</a> [cite: 46, 47]</p>
-    </div>
-</section>
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h4>Email</h4>
+                <a href="mailto:samsuryasingh@gmail.com">samsuryasingh@gmail.com</a>
+            </div>
+            
+            <div class="contact-item">
+                <h4>Phone</h4>
+                <a href="tel:8953531942">+91 8953531942</a>
+            </div>
+            
+            <div class="contact-item">
+                <h4>LinkedIn</h4>
+                <a href="https://www.linkedin.com/in/89suryasingh/" target="_blank">linkedin.com/in/89suryasingh</a>
+            </div>
+            
+            <div class="contact-item">
+                <h4>GitHub</h4>
+                <a href="https://github.com/suryach8953" target="_blank">github.com/suryach8953</a>
+            </div>
+        </div>
+    </section>
+</div>
 
 <footer>
     <p>© 2025 Surya Pratap Singh. All rights reserved.</p>
 </footer>
+
+<script>
+// Smooth scroll for navigation
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// Add subtle animation on scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(card);
+});
+</script>
 
 </body>
 </html>
