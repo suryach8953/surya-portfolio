@@ -15,40 +15,157 @@
         }
 
         body {
-            background: #f8fafc;
+            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 50%, #e0e7ff 100%);
             color: #1e293b;
             line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        /* Header */
+        /* Animated Data Particles Background */
+        .data-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        .particle {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            25% { transform: translateY(-100px) translateX(50px) rotate(90deg); }
+            50% { transform: translateY(-200px) translateX(-50px) rotate(180deg); }
+            75% { transform: translateY(-100px) translateX(100px) rotate(270deg); }
+        }
+
+        /* Header with animated gradient */
         header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
             color: white;
             text-align: center;
             padding: 60px 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Animated data icons in header */
+        .header-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.15;
+        }
+
+        .data-icon {
+            position: absolute;
+            font-size: 3rem;
+            animation: iconFloat 15s infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
+            50% { transform: translateY(-30px) rotate(180deg); opacity: 0.2; }
+        }
+
+        .icon-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .icon-2 { top: 60%; left: 80%; animation-delay: 2s; }
+        .icon-3 { top: 40%; left: 50%; animation-delay: 4s; }
+        .icon-4 { top: 70%; left: 20%; animation-delay: 6s; }
 
         header h1 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         header .tagline {
             font-size: 1.2rem;
             color: #94a3b8;
             margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         header .highlight {
             color: #3b82f6;
             font-weight: 600;
+            position: relative;
+        }
+
+        header .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            animation: underlineGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes underlineGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         /* Navigation */
         nav {
             margin-top: 20px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         nav a {
@@ -56,12 +173,30 @@
             color: #cbd5e1;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
             font-size: 0.95rem;
+            position: relative;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: all 0.3s;
+            transform: translateX(-50%);
         }
 
         nav a:hover {
             color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        nav a:hover::before {
+            width: 100%;
         }
 
         /* Container */
@@ -69,9 +204,11 @@
             max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Section Titles */
+        /* Section Titles with animation */
         .section-title {
             font-size: 1.8rem;
             font-weight: 700;
@@ -80,22 +217,71 @@
             padding-bottom: 10px;
             border-bottom: 3px solid #3b82f6;
             display: inline-block;
+            position: relative;
+            animation: slideInLeft 0.8s ease-out;
         }
 
-        /* Cards */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #60a5fa;
+            animation: lineExpand 1.5s ease-out forwards;
+        }
+
+        @keyframes lineExpand {
+            to { width: 100%; }
+        }
+
+        /* Cards with enhanced hover */
         .card {
-            background: white;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(249,250,251,0.95) 100%);
+            backdrop-filter: blur(10px);
             padding: 30px;
             margin-bottom: 25px;
             border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59,130,246,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border-left: 4px solid #3b82f6;
+            border: 1px solid rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59,130,246,0.15), transparent);
+            transition: left 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
         }
 
         .card:hover {
-            box-shadow: 0 4px 12px rgba(59,130,246,0.15);
-            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(59,130,246,0.25);
+            transform: translateY(-8px) scale(1.02);
+            border-left-color: #60a5fa;
+            background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(239,246,255,1) 100%);
         }
 
         /* About Section */
@@ -106,13 +292,48 @@
             flex-wrap: wrap;
         }
 
+        .profile-img-wrapper {
+            position: relative;
+            animation: scaleIn 1s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5) rotate(-180deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        .profile-img-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #3b82f6, #60a5fa, #3b82f6);
+            border-radius: 12px;
+            animation: rotateBorder 3s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotateBorder {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
         .profile-img {
             width: 160px;
             height: 160px;
             border-radius: 12px;
             object-fit: cover;
-            border: 4px solid #3b82f6;
+            border: 4px solid white;
             flex-shrink: 0;
+            display: block;
         }
 
         .about-text {
@@ -124,9 +345,10 @@
             font-size: 1.05rem;
             line-height: 1.8;
             color: #475569;
+            animation: fadeIn 1s ease-out 0.5s both;
         }
 
-        /* Skills Section */
+        /* Skills Section with pulse animation */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -134,10 +356,36 @@
         }
 
         .skill-category {
-            background: white;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(239,246,255,0.9) 100%);
+            backdrop-filter: blur(10px);
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(59,130,246,0.1);
+            transition: all 0.3s;
+            animation: fadeInScale 0.6s ease-out both;
+            border: 1px solid rgba(59,130,246,0.2);
+        }
+
+        .skill-category:nth-child(1) { animation-delay: 0.1s; }
+        .skill-category:nth-child(2) { animation-delay: 0.2s; }
+        .skill-category:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .skill-category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(59,130,246,0.25);
+            background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(219,234,254,1) 100%);
+            border-color: #3b82f6;
         }
 
         .skill-category h3 {
@@ -156,13 +404,19 @@
             color: #475569;
             border-bottom: 1px solid #f1f5f9;
             font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .skill-category li:hover {
+            padding-left: 10px;
+            color: #3b82f6;
         }
 
         .skill-category li:last-child {
             border-bottom: none;
         }
 
-        /* Toggle Button Section */
+        /* Toggle Button Section with pulse */
         .toggle-section {
             text-align: center;
             margin: 60px 0 40px 0;
@@ -186,31 +440,56 @@
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 2px 8px rgba(59,130,246,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toggle-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .toggle-btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .toggle-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(59,130,246,0.4);
         }
 
         .toggle-btn:active {
             transform: translateY(0);
         }
 
-        /* Hidden Sections */
+        .toggle-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hidden Sections with smooth reveal */
         .hidden-section {
             display: none;
-            animation: fadeIn 0.5s ease-in;
         }
 
         .hidden-section.active {
             display: block;
+            animation: revealSection 0.6s ease-out;
         }
 
-        @keyframes fadeIn {
+        @keyframes revealSection {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -236,6 +515,11 @@
             color: #0f172a;
             font-size: 1.3rem;
             font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .experience-item:hover .experience-header h3 {
+            color: #3b82f6;
         }
 
         .experience-header .duration {
@@ -261,6 +545,12 @@
             color: #475569;
             position: relative;
             line-height: 1.7;
+            transition: all 0.3s;
+        }
+
+        .responsibilities li:hover {
+            padding-left: 30px;
+            color: #1e293b;
         }
 
         .responsibilities li:before {
@@ -269,17 +559,29 @@
             left: 0;
             color: #3b82f6;
             font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .responsibilities li:hover:before {
+            transform: translateX(5px);
         }
 
         .metric {
             color: #3b82f6;
             font-weight: 600;
+            position: relative;
         }
 
         /* Education & Certifications */
         .education-item {
             padding: 20px 0;
             border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .education-item:hover {
+            padding-left: 15px;
+            border-left: 3px solid #3b82f6;
         }
 
         .education-item:last-child {
@@ -311,10 +613,19 @@
         }
 
         .cert-item {
-            background: #f8fafc;
+            background: linear-gradient(135deg, rgba(248,250,252,0.95) 0%, rgba(239,246,255,0.95) 100%);
             padding: 15px 20px;
             border-radius: 8px;
             border-left: 3px solid #3b82f6;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(59,130,246,0.08);
+        }
+
+        .cert-item:hover {
+            background: linear-gradient(135deg, rgba(239,246,255,1) 0%, rgba(219,234,254,1) 100%);
+            transform: translateX(8px);
+            border-left-width: 5px;
+            box-shadow: 0 4px 15px rgba(59,130,246,0.2);
         }
 
         .cert-item h4 {
@@ -328,22 +639,46 @@
             font-size: 0.85rem;
         }
 
-        /* Achievement Section */
+        /* Achievement Section with glow */
         .achievement {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            background: linear-gradient(135deg, rgba(239,246,255,0.95) 0%, rgba(219,234,254,0.95) 100%);
             padding: 20px;
             border-radius: 8px;
             border-left: 4px solid #3b82f6;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(59,130,246,0.15);
+        }
+
+        .achievement::before {
+            content: '🏆';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 4rem;
+            opacity: 0.15;
+        }
+
+        .achievement:hover {
+            box-shadow: 0 8px 30px rgba(59,130,246,0.3);
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, rgba(219,234,254,1) 0%, rgba(191,219,254,1) 100%);
         }
 
         .achievement h3 {
             color: #1e40af;
             font-size: 1.1rem;
             margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
         }
 
         .achievement p {
             color: #475569;
+            position: relative;
+            z-index: 1;
         }
 
         /* Contact Section */
@@ -356,15 +691,36 @@
         .contact-item {
             text-align: center;
             padding: 20px;
-            background: white;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(239,246,255,0.95) 100%);
+            backdrop-filter: blur(10px);
             border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(59,130,246,0.1);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(59,130,246,0.2);
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59,130,246,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .contact-item:hover::before {
+            left: 100%;
         }
 
         .contact-item:hover {
-            box-shadow: 0 4px 12px rgba(59,130,246,0.15);
-            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(59,130,246,0.3);
+            transform: translateY(-8px) scale(1.05);
+            background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(219,234,254,1) 100%);
+            border-color: #3b82f6;
         }
 
         .contact-item h4 {
@@ -380,19 +736,33 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 1rem;
+            transition: all 0.3s;
         }
 
         .contact-item a:hover {
             color: #1e40af;
+            transform: scale(1.05);
+            display: inline-block;
         }
 
         /* Footer */
         footer {
-            background: #0f172a;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: #94a3b8;
             text-align: center;
             padding: 30px 20px;
             margin-top: 60px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
         }
 
         /* Responsive */
@@ -424,7 +794,16 @@
 </head>
 <body>
 
+<!-- Animated Data Particles -->
+<div class="data-particles" id="dataParticles"></div>
+
 <header>
+    <div class="header-icons">
+        <div class="data-icon icon-1">📊</div>
+        <div class="data-icon icon-2">📈</div>
+        <div class="data-icon icon-3">💹</div>
+        <div class="data-icon icon-4">📉</div>
+    </div>
     <h1>Surya Pratap Singh</h1>
     <p class="tagline"><span class="highlight">Data Analyst</span> | Operations Excellence | Process Optimization</p>
     <nav>
@@ -436,12 +815,14 @@
 </header>
 
 <div class="container">
-    <!-- About Section (Always Visible) -->
+    <!-- About Section -->
     <section id="about">
         <h2 class="section-title">About Me</h2>
         <div class="card">
             <div class="about-content">
-                <img src="profile.jpg" alt="Surya Pratap Singh" class="profile-img">
+                <div class="profile-img-wrapper">
+                    <img src="profile.jpg" alt="Surya Pratap Singh" class="profile-img">
+                </div>
                 <div class="about-text">
                     <p>
                         Data Analyst with expertise in <strong>financial operations</strong> and <strong>process optimization</strong>. Proven track record of leveraging data-driven insights to enhance efficiency and drive business outcomes. Skilled in <strong>MIS reporting</strong>, <strong>financial reconciliation</strong>, and <strong>performance analytics</strong> with hands-on experience in <strong>Power BI, MySQL, and Excel</strong>. Currently pursuing <strong>MBA</strong> to strengthen analytical and strategic capabilities. Passionate about transforming raw data into actionable insights that support operational excellence and business growth.
@@ -451,7 +832,7 @@
         </div>
     </section>
 
-    <!-- Skills Section (Always Visible) -->
+    <!-- Skills Section -->
     <section id="skills">
         <h2 class="section-title">Technical Skills</h2>
         <div class="skills-container">
@@ -494,18 +875,17 @@
     <div class="toggle-section" id="toggle-section">
         <h2 class="section-title">Explore More</h2>
         <div class="toggle-buttons">
-            <button class="toggle-btn" onclick="toggleSection('experience')">Work Experience</button>
-            <button class="toggle-btn" onclick="toggleSection('education')">Education</button>
-            <button class="toggle-btn" onclick="toggleSection('certifications')">Certifications</button>
-            <button class="toggle-btn" onclick="toggleSection('achievements')">Achievements</button>
+            <button class="toggle-btn" onclick="toggleSection('experience')"><span>Work Experience</span></button>
+            <button class="toggle-btn" onclick="toggleSection('education')"><span>Education</span></button>
+            <button class="toggle-btn" onclick="toggleSection('certifications')"><span>Certifications</span></button>
+            <button class="toggle-btn" onclick="toggleSection('achievements')"><span>Achievements</span></button>
         </div>
     </div>
 
-    <!-- Experience Section (Hidden by default) -->
+    <!-- Experience Section -->
     <section id="experience" class="hidden-section">
         <h2 class="section-title">Work Experience</h2>
         
-        <!-- Team Leader Role -->
         <div class="card">
             <div class="experience-item">
                 <div class="experience-header">
@@ -532,7 +912,6 @@
             </div>
         </div>
 
-        <!-- Operations Executive Role -->
         <div class="card">
             <div class="experience-item">
                 <div class="experience-header">
@@ -560,7 +939,7 @@
         </div>
     </section>
 
-    <!-- Education Section (Hidden by default) -->
+    <!-- Education Section -->
     <section id="education" class="hidden-section">
         <h2 class="section-title">Education</h2>
         <div class="card">
@@ -590,7 +969,7 @@
         </div>
     </section>
 
-    <!-- Certifications Section (Hidden by default) -->
+    <!-- Certifications Section -->
     <section id="certifications" class="hidden-section">
         <h2 class="section-title">Certifications</h2>
         <div class="card">
@@ -623,7 +1002,7 @@
         </div>
     </section>
 
-    <!-- Achievements Section (Hidden by default) -->
+    <!-- Achievements Section -->
     <section id="achievements" class="hidden-section">
         <h2 class="section-title">Notable Achievement</h2>
         <div class="card">
@@ -634,7 +1013,7 @@
         </div>
     </section>
 
-    <!-- Contact Section (Always Visible) -->
+    <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-grid">
@@ -666,6 +1045,21 @@
 </footer>
 
 <script>
+// Generate animated data particles
+const particles = document.getElementById('dataParticles');
+const dataSymbols = ['📊', '📈', '💹', '📉', '💻', '🔢', '📋', '📌', '🎯', '⚡'];
+
+for (let i = 0; i < 15; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.textContent = dataSymbols[Math.floor(Math.random() * dataSymbols.length)];
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.top = Math.random() * 100 + '%';
+    particle.style.animationDelay = Math.random() * 20 + 's';
+    particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+    particles.appendChild(particle);
+}
+
 // Toggle section visibility
 function toggleSection(sectionId) {
     const section = document.getElementById(sectionId);
@@ -697,10 +1091,10 @@ document.querySelectorAll('nav a').forEach(anchor => {
     });
 });
 
-// Add subtle animation on scroll for visible sections
+// Intersection Observer for scroll animations
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -712,12 +1106,50 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
+// Observe cards for animation
 document.querySelectorAll('.card').forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(card);
 });
+
+// Add ripple effect to buttons
+document.querySelectorAll('.toggle-btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        ripple.style.position = 'absolute';
+        ripple.style.borderRadius = '50%';
+        ripple.style.background = 'rgba(255,255,255,0.6)';
+        ripple.style.width = ripple.style.height = '100px';
+        ripple.style.left = e.offsetX - 50 + 'px';
+        ripple.style.top = e.offsetY - 50 + 'px';
+        ripple.style.animation = 'ripple 0.6s ease-out';
+        ripple.style.pointerEvents = 'none';
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    });
+});
+
+// Add ripple animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        from {
+            width: 0;
+            height: 0;
+            opacity: 1;
+        }
+        to {
+            width: 300px;
+            height: 300px;
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
 </script>
 
 </body>
